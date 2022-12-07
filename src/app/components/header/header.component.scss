@@ -1,0 +1,85 @@
+@import '../../shared/styles/variables';
+
+@font-face {
+    font-family: RotondaC-Bold;
+    src: url(../../../assets/fonts/RotondaC-Bold.woff2) format("opentype");
+}
+
+.navbar-brand img {
+    max-width: 134px;
+    display: block;
+}
+
+.nav-item img {
+    max-width: 45px;
+}
+
+.btn-burger{
+    display: flex;
+    align-items: center;
+}
+
+.burger-menu{
+    position: absolute;
+    top: -12px;
+    left: -24px;
+    background-color: $white;
+}
+
+.burger-menu img{
+    max-width: 20px;
+    rotate: 0deg;
+    animation: rotation 0.3s ease-out;
+}
+
+@keyframes rotation {
+    from {
+      rotate: -45deg;
+    }
+    to {
+      rotate: 90deg;
+    }
+}
+
+ul{
+    list-style-type: none;
+}
+
+.burger-menu a{
+    text-decoration: none;
+}
+
+.burger-menu div{
+    width: 170px;
+    font-size: 16px;
+    border: 2px solid transparent;
+
+    &:hover{
+        border-color: $primary;
+    }
+}
+
+.basket-number{
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    min-width: 22px;
+    height: 22px;
+    line-height: 22px;
+    background-color: $white;
+    color: $black;
+    border-radius: 100%;
+    text-align: center;
+}
+
+.fs-14 .hover-blue{
+    color: $black;
+}
+
+.fs-14 .hover-blue:hover{
+    color: $primary;
+}
+
+.margin-header {
+    height: 97px;
+}

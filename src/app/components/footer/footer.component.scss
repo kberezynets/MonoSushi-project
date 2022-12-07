@@ -1,0 +1,31 @@
+@import '../../shared/styles/variables';
+
+.footer-logo img{
+    max-width: 123px;
+    height: fit-content;
+    display: block;
+}
+
+.top-border .hover-blue:hover{
+    color: $primary;
+}
+
+.pay-cards img{
+    max-width: 30px;
+}
+
+.pay-card-item{
+    width: 56px;
+    height: 33px;
+    border: 1px solid $grey;
+}
+
+.social{
+    width: 40px;
+    height: 40px;
+}
+
+.social > img{
+    width: 14px;
+    height: 14px;
+}

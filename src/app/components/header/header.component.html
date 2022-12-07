@@ -1,0 +1,142 @@
+<header class="text-body fs-14">
+    <nav class="navbar fixed-top navbar-expand-lg bg-white p-0">
+        <div class="container-fluid d-flex space-between p-0">
+            <!-- Logo box -->
+                <a class="navbar-brand bg-blue h-100 px-3 py-4 m-0" [routerLink]="[ '/' ]">
+                    <img src="../../../assets/images/logo.svg" alt="monosushi-logo" class="">
+                </a>
+            <!-- Nav menu -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-0 ms-1 mb-2 mb-lg-0">
+                    <li class="nav-item d-flex align-items-center">
+                        <a [routerLink]="[ '/actions' ]" routerLinkActive="route-active"
+                            class="nav-link border-animation px-3 py-2 me-3">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <div>
+                                    <img src="../../../assets/images/nav-img-gift.svg" alt="gift">
+                                </div>
+                                <span class="boldR text-dark">Акції</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a [routerLink]="[ '/product-category/rolls' ]" routerLinkActive="route-active"
+                            class="nav-link border-animation px-3 py-2 me-3">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <div>
+                                    <img src="../../../assets/images/nav-img-rolls.svg" alt="rolls">
+                                </div>
+                                <span class="boldR text-dark">Роли</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a [routerLink]="[ '/product-category/sets' ]" routerLinkActive="route-active"
+                            class="nav-link border-animation px-3 py-2 me-3">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <div>
+                                    <img src="../../../assets/images/nav-img-sets.svg" alt="">
+                                </div>
+                                <span class="boldR text-dark">Сети</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a [routerLink]="[ '/product-category/drinks' ]" routerLinkActive="route-active"
+                            class="nav-link border-animation px-3 py-2 me-3">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <div>
+                                    <img src="../../../assets/images/nav-img-drinks.svg" alt="">
+                                </div>
+                                <span class="boldR text-dark">Напої</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a [routerLink]="[ '/product-category/sauses' ]" routerLinkActive="route-active"
+                            class="nav-link border-animation px-3 py-2 me-3">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <div>
+                                    <img src="../../../assets/images/nav-img-sause.svg" alt="">
+                                </div>
+                                <span class="boldR text-dark">Соуси</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- Burger menu -->
+                    <li class="nav-item d-flex align-items-center position-relative">
+                        <a class="nav-link border-animation p-1 me-5 mb-1 btn-burger" 
+                            (click)="showMenu()">
+                            <img src="../../../assets/images/burger.png" alt="">
+                        </a>
+                        <ul class="border-blue rounded burger-menu px-4 py-2" 
+                            [ngStyle]="{'display': hideMenu ? 'none' : 'block'}"
+                            (mouseleave)="hideMenu=true" >
+                            <li class="mt-3 ms-2">
+                                <img src="../../../assets/images/close.jpg" alt="" class="m-1" 
+                                    (click)="showMenu()">
+                            </li>
+                            <li>
+                                <a [routerLink]="[ '/dostavka-ta-oplata' ]" routerLinkActive="route-active nav-item">
+                                    <div class="boldR rounded p-2 my-3 text-dark"> 
+                                        Доставка та оплата
+                                    </div> 
+                                </a>
+                            </li>
+                            <li>
+                                <a [routerLink]="[ '/about-us' ]" routerLinkActive="route-active">
+                                    <div class="boldR rounded p-2 my-2 text-dark">
+                                        Про нас
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a [routerLink]="[ '/actions' ]" routerLinkActive="route-active">
+                                    <div class="boldR rounded p-2 my-2 text-dark">
+                                        Акції
+                                    </div> 
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Other info -->
+                    <li class="nav-item d-flex align-items-center me-5">
+                        <a class="nav-link">
+                            <div class="bg-blue border-blue rounded px-2 py-1">
+                                <img src="../../../assets/images/phone.svg" alt="">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex flex-column align-items-center me-5">
+                        <a class="nav-link ">
+                            <p class="boldR text-center m-0 hover-blue">(097) 878 08 37</p>
+                        </a>
+                        <p class="m-0 fs-12">
+                            Працюємо з 
+                            <span class="boldR">11:00</span> 
+                            до 
+                            <span class="boldR">22:30</span>
+                        </p>
+                    </li>
+                    <li class="nav-item d-flex align-items-center me-5">
+                        <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active" 
+                            class="nav-link border-animation px-2">
+                            <div>
+                                <img src="../../../assets/images/user.svg" alt="">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Basket -->
+            <div class="bg-blue h-100 px-3 py-4">
+                <a class="mx-1 my-3">
+                    <img src="../../../assets/images/basket.svg" alt="basket" class="mx-2 mt-1 mb-2">
+                    <span class="basket-number fs-12">0</span>  
+                </a>
+                <span><b>0</b> грн</span>
+            </div>
+        </div>
+    </nav>
+    <div class="margin-header"></div>
+</header>

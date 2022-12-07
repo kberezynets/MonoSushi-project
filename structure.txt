@@ -1,0 +1,30 @@
+Task 08
+1. Розробити базову структуру та маршрутизацію сайту MONOSUSHI разом з адмін блоком
+2. Накласти максимально подібні стилі на такі елементи як: header, footer, постер на головній сторінці, а також статичні сторінки доставка та оплата а також про нас.
+3. Також розробити CRUD функціонал(create, read, update, delete) акцій та категорій зі збереженням в db.json(json-server).
+4. Також не забудьте підключити firebase для завантаження картинок.
+
+
+app/
+    components/
+        header.component
+        footer.component
+    pages/
+        home.component
+        actions.component
+        product.component
+        dostavka-ta-oplata.component
+        about-us.component
+    shared/
+        styles/
+            _variables.scss
+            _mixins.scss
+            _base.scss
+        interfaces/
+        pipes/
+        guards/
+        services/
+    admin.component
+        admin-action.component
+        admin-category.component
+

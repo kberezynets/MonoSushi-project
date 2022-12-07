@@ -1,1 +1,214 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/shared/styles/variables';
+
+@font-face {
+    font-family: RotondaC;
+    src: url(assets/fonts/RotondaC.woff2) format("opentype");
+}
+
+@font-face {
+    font-family: RotondaC-Bold;
+    src: url(assets/fonts/RotondaC-Bold.woff2) format("opentype");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'RotondaC', 'arial', sans-serif;
+}
+
+// --- Backgrounds && Borders && Text Color
+.bg-blue {
+    background-color: $primary;
+}
+
+.border-blue{
+    border: 2px solid $primary;
+
+    &:hover{
+        background-color: $white;
+    }
+}
+
+.border-animation {
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 7px;
+    }
+
+    &::before {
+        border: 2px solid transparent;
+    }
+
+    &:hover::before {
+      border-top-color: $primary;
+      border-right-color: $primary;
+      border-bottom-color: $primary;
+      border-left-color: $primary;
+
+      transition:
+        border-top-color 0.15s ease-out,
+        border-right-color 0.15s ease-out 0.10s,
+        border-bottom-color 0.15s ease-out 0.20s,
+        border-left-color 0.15s ease-out 0.30s;
+    }
+}
+
+.border-bottom-animation{
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 0;
+        height: 2px;
+        background-color: $primary;
+    }
+
+    &::before {
+        width: 0%;
+    }
+
+    &:hover::before {
+      width: 100%;
+      transition:
+        width 0.20s ease-out;
+    }
+}
+
+.color-blue {
+    color: $primary;
+}
+
+.green .boldR {
+    color: $green;
+}
+
+.yellow .boldR {
+    color: $yellow;
+}
+
+// --- Fonts styles
+.fs-12 {
+    font-size: 12px;
+    color: $black;
+}
+
+.fs-14 {
+    font-size: 14px;
+    color: $black;
+}
+
+.fs-18 {
+    font-size: 18px;
+    color: $black;
+}
+
+.boldR {
+    font-family: 'RotondaC-Bold', 'arial', sans-serif;
+}
+
+// --- Buttons styles
+.btn-white {
+    width: 20%;
+    background-color: $white;
+    color: $black;
+    border: 2px solid $primary;
+
+    &:hover {
+        background-color: $primary;
+    }
+}
+
+.markers-style ul li {
+    position: relative;
+
+    &::before {
+        width: 11px;
+        height: 11px;
+        position: absolute;
+        left: -18px;
+        top: 7px;
+        border-radius: 100%;
+        background: $primary;
+        content: "";
+    }
+
+    &::after {
+        width: 9px;
+        height: 9px;
+        position: absolute;
+        left: -17px;
+        top: 8px;
+        border-radius: 100%;
+        border: 2px solid $white;
+        background: transparent;
+        content: "";
+    }
+}
+
+// --- Admin page. Buttons && tables
+table .my-border-bottom {
+    border-bottom: 2px solid $primary;
+}
+
+tbody td > button {
+    width: fit-content;
+    border-color: transparent;
+    background-color: transparent;
+    text-align: left;
+}
+
+// ---Other Styles
+.title-box {
+    margin: 40px auto 0;
+    max-width: 550px;
+    text-align: center;
+}
+
+.header-line {
+    display: inline-block;
+    position: relative;
+    padding-top: 10px;
+    font-family: 'RotondaC-Bold', 'arial', sans-serif;
+    font-size: 42px;
+    line-height: 1.2em;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+        width: 100%;
+        height: 5px;
+        background: $primary;
+    }
+}
+
+.top-border { 
+    border-top: 4px solid $primary; // Footer top
+}
+
+.image-block {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.spacer {
+    height: 60px;
+}
+
+.spacer-xl {
+    height: 90px;
+}

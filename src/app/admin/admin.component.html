@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="spacer"></div>
+    <div class="d-flex align-items-start">
+        <nav class="nav flex-column me-3">
+            <a class="nav-link text-center standard-nav border-start-0 px-5 py-3" 
+                [routerLink]="[ 'action' ]" routerLinkActive="route-active"
+                >Акції
+            </a>
+            <a class="nav-link text-center standard-nav border-start-0 px-5 py-3" 
+                [routerLink]="[ 'category' ]" routerLinkActive="route-active"
+                >Категорії
+            </a>
+            <a class="nav-link standard-nav text-center border-start-0 px-5 py-3 disabled">Товари</a>
+            <a class="nav-link standard-nav text-center border-start-0 px-5 py-3 disabled">Замовлення</a>
+            <button class="bg-blue border-blue rounded boldR my-3 px-3 py-3">ВИХІД</button>
+        </nav>
+        
+        <div class="tab-content w-100" id="v-pills-tabContent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div class="spacer"></div>
+</div>

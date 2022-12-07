@@ -1,0 +1,13 @@
+@import '../shared/styles/variables';
+
+.standard-nav{
+    border: 1px solid $grey;
+    color: $black;
+}
+
+.nav > .route-active{
+    border: 0;
+    border-top: 4px solid $primary;
+    font-family: 'RotondaC-Bold', 'arial', sans-serif;
+}
+

@@ -1,0 +1,20 @@
+{
+  "actions": [
+    {
+      "name": "рол тижня",
+      "title": "50% знижки на «Рол тижня»",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню для ...",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-f4c7b.appspot.com/o/images%2F1_852h400_montazhna-oblast-1.png?alt=media&token=51373ef2-3c02-4a8e-8fe2-d79160ef8d4f",
+      "date": 1638565334,
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "роли",
+      "path": "rolls",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-f4c7b.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=74a02ac4-e896-416f-b6f9-86f996495f8b",
+      "id": 1
+    }
+  ]
+}

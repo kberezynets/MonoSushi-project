@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  firebase: {
+    projectId: 'monosushi-f4c7b',
+    appId: '1:347960922581:web:25bd7479c4b134d4ebed5c',
+    storageBucket: 'monosushi-f4c7b.appspot.com',
+    locationId: 'us-central',
+    apiKey: 'AIzaSyCWuPs9xEwcI856acqOJpJ3rzPjTwnGPjI',
+    authDomain: 'monosushi-f4c7b.firebaseapp.com',
+    messagingSenderId: '347960922581',
+  },
+  production: false,
+  BACKEND_URL: 'http://localhost:3000'
+
 };
 
 /*

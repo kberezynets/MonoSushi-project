@@ -1,0 +1,21 @@
+@import '../../shared/styles/variables';
+
+.banner img {
+    width: 100%;
+}
+
+.banner-text{
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    width: 30%;
+}
+
+.text-about{
+    font-size: 32px;
+    color: $white;
+}
+
+.banner-text > button:hover{
+    border-color: $white;
+}

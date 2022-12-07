@@ -1,0 +1,86 @@
+<div class="row mx-3 pt-1">
+    <button class="btn-white rounded boldR py-3 mb-3 w-25" (click)="addAction()">ДОДАТИ АКЦІЮ</button>
+    <ng-container *ngIf="addStatus">
+        <form [formGroup]="actionForm" (ngSubmit)="saveAction()" class="p-0">
+            <div class="row mb-3">
+                <div class="col">
+                    <input formControlName="name" name="name" type="text" class="form-control py-3" id="name" placeholder="*Назва">
+                </div>
+                <div class="col">
+                    <input formControlName="title" name="title" type="text" class="form-control py-3" id="title" placeholder="*Заголовок">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <textarea formControlName="description" name="description" id="description" 
+                        cols="30" rows="4" class="form-control text-secondary" placeholder="*Опис">
+                    </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <ng-container *ngIf="!isUploaded" >
+                    <div class="d-flex flex-column">
+                        <div class="col">
+                            <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                        </div>
+                        <div class="progress my-3">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" 
+                            [style.width.%]="uploadPercent"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div class="d-flex flex-column">
+                        <img [src]="valueByControl('imagePath')" alt="" height="80px" class="ali w-25">
+                        <button type="button" class="btn btn-danger w-25 mx-2 my-3" 
+                            (click)="deleteImage()">
+                            Видалити
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+            <button 
+                [disabled]="actionForm.invalid" 
+                type="submit" class="bg-blue border-blue rounded boldR px-5 py-3 mb-3">
+                {{ !editStatus ? 'ЗБЕРЕГТИ' : 'ЗМІНИТИ' }}
+            </button>
+        </form>
+    </ng-container>
+    <table class="table fs-14">
+        <thead>
+            <tr class="my-border-bottom">
+                <th scope="col">Дата</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Заголовок</th>
+                <th scope="col">Опис</th>
+                <th scope="col">Картинка</th>
+                <th scope="col">Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let action of adminActions">
+                <td>{{ action.date | date:'MM.yyyy' }}</td>
+                <td>{{ action.name }}</td>
+                <td>{{ action.title }}</td>
+                <td>
+                    {{ action.description | slice:0:53 }}
+                    <span *ngIf="action.description.length > 54">...</span>
+                </td> 
+                <td>
+                    <img [src]="action.imagePath" alt="" height="50px">
+                </td>
+                <td class="d-flex flex-column">
+                    <button 
+                    (click)="editAction(action)"
+                    type="button" class="color-blue boldR border-bottom-animation"
+                    >Редагувати</button>
+                    <button 
+                        [disabled] = "editStatus" (click)="deleteAction(action)"
+                        class="color-blue boldR border-bottom-animation mt-1"
+                    >Видалити</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
