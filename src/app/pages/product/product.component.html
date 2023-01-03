@@ -2,3 +2,55 @@
     <h2 class="text-center header-line">Продукти</h2>
 </div>
 <div class="spacer"></div>
+<div class="container"> 
+    <ul class="nav nav-tabs border-0">
+        <li class="nav-item tab-type tab-active">
+          <a class="nav-link boldR">Всі</a>
+        </li>
+        <li class="nav-item tab-type border">
+            <a class="nav-link boldR">Філадельфія</a>
+        </li>
+        <li class="nav-item tab-type border">
+            <a class="nav-link boldR">Каліфорнія</a>
+        </li>
+        <li class="nav-item tab-type border">
+            <a class="nav-link boldR">Запечені</a>
+        </li>
+        <li class="nav-item tab-type border">
+            <a class="nav-link boldR">Фірмові</a>
+        </li>
+        <li class="nav-item tab-type border">
+            <a class="nav-link boldR">Маки</a>
+        </li>
+        <li class="nav-item tab-type border">
+            <a class="nav-link boldR">Преміум</a>
+        </li>
+    </ul>    
+</div>
+<div class="spacer"></div>
+<div class="row" *ngFor="let product of products">
+    <div class="col-3 product-box border-animation rounded mx-3 p-3">
+        <img [src] = "product.imagePath" alt="" width="100%">
+        <h5 class="boldR text-center">{{ product.name }} </h5>
+        <div class="d-flex justify-content-between mb-3 color-grey">
+            <div>{{ product.ingridients }}</div>
+            <div class="boldR">{{ product. weight}} г</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="fs-18"> 
+                <span class="boldR">{{ product.price }} </span>
+                 грн
+            </div>
+            <div class="btn-group border btn-qty" role="group">
+                <button type="button" class="btn">+</button>
+                <button type="button" class="btn boldR disabled">1</button>
+                <button type="button" class="btn">-</button>
+            </div>
+            <button class="bg-blue border-blue btn-order rounded boldR fs-12 p-2">ЗАМОВИТИ</button>
+            
+        </div>
+
+    </div>
+</div>
+
+<div class="spacer"></div>

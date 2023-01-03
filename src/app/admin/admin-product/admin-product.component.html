@@ -1,0 +1,98 @@
+<div class="row mx-3 pt-1">
+    <button class="btn-white rounded boldR py-3 mb-3 w-25" (click)="addProduct()">ДОДАТИ ПРОДУКТ</button>
+    <ng-container *ngIf="addStatus">
+        <form [formGroup]="productForm" (ngSubmit)="saveProduct()" class="p-0">
+            <div class="row mb-3">
+                <div class="col-8">
+                    <select formControlName="category" class="form-select">
+                        <option [ngValue]="category" *ngFor="let category of adminCategories">
+                            {{category.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <input formControlName="name" name="name" type="text" class="form-control py-3" id="name"
+                        placeholder="*Назва">
+                </div>
+                <div class="col-4">
+                    <input formControlName="path" name="path" type="text" class="form-control py-3" id="path"
+                        placeholder="*Шлях">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-8">
+                    <input formControlName="ingridients" name="ingridients" type="text" class="form-control py-3" id="ingridients" placeholder="*Інгредієнти">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <input formControlName="weight" name="weight" type="number" class="form-control py-3" id="weight"
+                        placeholder="*Вага">
+                </div>
+                <div class="col-4">
+                    <input formControlName="price" name="price" type="number" class="form-control py-3" id="price"
+                        placeholder="*Ціна">
+                </div>
+            </div>
+            <div class="row">
+                <ng-container *ngIf="!isUploaded">
+                    <div class="d-flex flex-column mb-3">
+                        <div class="col-8">
+                            <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                        </div>
+                        <!-- <div class="progress my-3">
+                            <div class="progress-bar progress-bar-striped" role="progressbar"
+                                [style.width.%]="uploadPercent" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> -->
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div class="d-flex flex-column">
+                        <img [src]="valueByControl('imagePath')" alt="" max-height="80px" class="ali w-25">
+                        <button type="button" class="btn btn-danger w-25 my-3" (click)="deleteImage()">
+                            Видалити
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+            <button [disabled]="productForm.invalid" type="submit"
+                class="bg-blue border-blue rounded boldR px-5 py-3 mb-3">
+                {{ !editStatus ? 'ЗБЕРЕГТИ' : 'ЗМІНИТИ' }}
+            </button>
+        </form>
+    </ng-container>
+    <table class="table fs-14">
+        <thead>
+            <tr class="my-border-bottom">
+                <th scope="col">№</th>
+                <th scope="col">Категорія</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Інгредієнти</th>
+                <th scope="col">Вага</th>
+                <th scope="col">Ціна</th>
+                <th scope="col">Картинка</th>
+                <th scope="col">Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of adminProducts, index as i">
+                <td>№{{ i+1 }}</td>
+                <td>{{ product.category.name}}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.ingridients }}</td>
+                <td>{{ product.weight }} г.</td>
+                <td>{{ product.price }} грн.</td>
+                <td>
+                    <img [src]="product.imagePath" alt="" height="50px">
+                </td>
+                <td class="d-flex flex-column">
+                    <button (click)="editProduct(product)" type="button" class="color-blue boldR border-bottom-animation">Редагувати</button>
+                    <button [disabled]="editStatus" (click)="deleteProduct(product)"
+                        class="color-blue boldR border-bottom-animation mt-1">Видалити</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

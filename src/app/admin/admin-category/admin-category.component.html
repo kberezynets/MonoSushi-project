@@ -26,8 +26,7 @@
                 </ng-container>
                 <ng-container *ngIf="isUploaded">
                     <div class="d-flex flex-column">
-                        <img [src]="valueByControl('imagePath')" alt="" 
-                            height="80px" class="ali w-25">
+                        <img [src]="valueByControl('imagePath')" alt="" max-height="80px" class="ali w-25">
                         <button type="button" class="btn btn-danger w-25 my-3" (click)="deleteImage()">
                             Видалити
                         </button>
@@ -51,8 +50,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let category of adminCategories">
-                <td>№</td>
+            <tr *ngFor="let category of adminCategories, index as i">
+                <td>№{{i+1}}</td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.path }}</td>
                 <td>

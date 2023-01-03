@@ -1,4 +1,8 @@
 @import './app/shared/styles/variables';
+// @import 'ngx-toastr/toastr';
+@import '/node_modules/ngx-toastr/toastr' ;
+// @import 'ngx-toastr/toastr-bs4-alert';
+// @import '/node_modules/ngx-toastr/toastr-bs4-alert.scss';
 
 @font-face {
     font-family: RotondaC;
@@ -8,13 +12,6 @@
 @font-face {
     font-family: RotondaC-Bold;
     src: url(assets/fonts/RotondaC-Bold.woff2) format("opentype");
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'RotondaC', 'arial', sans-serif;
 }
 
 // --- Backgrounds && Borders && Text Color
@@ -90,12 +87,20 @@
     color: $primary;
 }
 
+.color-grey {
+    color: $dark-grey;
+}
+
 .green .boldR {
     color: $green;
 }
 
 .yellow .boldR {
     color: $yellow;
+}
+
+.hover-blue:hover, .top-border .hover-blue:hover{
+    color: $primary;
 }
 
 // --- Fonts styles
@@ -157,6 +162,57 @@
     }
 }
 
+.tab-type {
+    width: 14%;
+    cursor: pointer;
+
+    & a {
+        color: $dark-grey;
+        text-align: center;
+        line-height: 40px;
+    
+        &:hover{
+            border: 0;
+            color: $black;
+        }
+        &:not( :hover ){ 
+            border: 0; 
+        }
+    }
+}
+
+
+.tab-active{
+    border:0;
+    border-top: 4px solid $primary;
+
+    & a {
+        color: $black;
+    }
+}
+
+.product-box {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.btn-qty{
+    position: absolute;
+    z-index: 2;
+    right:100px;
+}
+
+.btn-qty > .btn:active, .btn:not( :active){
+    border: 0;
+}
+
+.btn-order{
+    position: absolute;
+    z-index: 2;
+    right: 16px;
+}
+
 // --- Admin page. Buttons && tables
 table .my-border-bottom {
     border-bottom: 2px solid $primary;
@@ -196,6 +252,10 @@ tbody td > button {
     }
 }
 
+.action-box > a {
+    cursor: pointer;
+}
+
 .top-border { 
     border-top: 4px solid $primary; // Footer top
 }
@@ -211,4 +271,8 @@ tbody td > button {
 
 .spacer-xl {
     height: 90px;
+}
+
+.check {
+    border: 1px solid red;
 }

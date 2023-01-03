@@ -10,6 +10,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminActionComponent } from './admin/admin-action/admin-action.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, children: [
     { path: 'action', component: AdminActionComponent},
     { path: 'category', component: AdminCategoryComponent},
+    { path: 'product', component: AdminProductComponent},
     { path: '', pathMatch: 'full', redirectTo: 'action' }
   ] },
 ];
