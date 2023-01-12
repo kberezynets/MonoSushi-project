@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IActionResponse } from 'src/app/shared/interfaces/action/action.interface';
 import { ActionService } from 'src/app/shared/services/action/action.service';
 
@@ -7,17 +9,23 @@ import { ActionService } from 'src/app/shared/services/action/action.service';
   templateUrl: './actions.component.html',
   styleUrls: ['./actions.component.scss']
 })
-export class ActionsComponent implements OnInit {
+export class ActionsComponent implements OnInit, OnDestroy {
 
   public actions: Array<IActionResponse> = [];
+  private eventSubscription!: Subscription;
 
   constructor(
-    private actionService: ActionService
-  ) { }
-
-  ngOnInit(): void {
-    this.loadActions();
+    private actionService: ActionService,
+    private router: Router
+  ) {
+    this.eventSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.loadActions();
+      }
+    })
   }
+
+  ngOnInit(): void {}
 
   loadActions(): void {
     this.actionService.getAll().subscribe(data => {
@@ -25,4 +33,7 @@ export class ActionsComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.eventSubscription.unsubscribe();
+  }
 }

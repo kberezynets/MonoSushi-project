@@ -18,6 +18,10 @@ export class ActionService {
     return this.http.get<IActionResponse[]>(this.api.categories)
   }
 
+  getOne(id: number): Observable<IActionResponse> {
+    return this.http.get<IActionResponse>(`${this.api.categories}/${id}`);
+  }
+
   create(category: IActionRequest): Observable<IActionResponse> {
     return this.http.post<IActionResponse>(this.api.categories, category);
   }

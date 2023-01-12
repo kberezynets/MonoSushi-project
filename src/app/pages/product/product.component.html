@@ -2,10 +2,10 @@
     <h2 class="text-center header-line">Продукти</h2>
 </div>
 <div class="spacer"></div>
-<div class="container"> 
+<div class="container">
     <ul class="nav nav-tabs border-0">
         <li class="nav-item tab-type tab-active">
-          <a class="nav-link boldR">Всі</a>
+            <a class="nav-link boldR">Всі</a>
         </li>
         <li class="nav-item tab-type border">
             <a class="nav-link boldR">Філадельфія</a>
@@ -25,31 +25,41 @@
         <li class="nav-item tab-type border">
             <a class="nav-link boldR">Преміум</a>
         </li>
-    </ul>    
+    </ul>
 </div>
 <div class="spacer"></div>
-<div class="row" *ngFor="let product of products">
-    <div class="col-3 product-box border-animation rounded mx-3 p-3">
-        <img [src] = "product.imagePath" alt="" width="100%">
-        <h5 class="boldR text-center">{{ product.name }} </h5>
-        <div class="d-flex justify-content-between mb-3 color-grey">
-            <div>{{ product.ingridients }}</div>
-            <div class="boldR">{{ product. weight}} г</div>
-        </div>
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="fs-18"> 
-                <span class="boldR">{{ product.price }} </span>
-                 грн
-            </div>
-            <div class="btn-group border btn-qty" role="group">
-                <button type="button" class="btn">+</button>
-                <button type="button" class="btn boldR disabled">1</button>
-                <button type="button" class="btn">-</button>
-            </div>
-            <button class="bg-blue border-blue btn-order rounded boldR fs-12 p-2">ЗАМОВИТИ</button>
-            
-        </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-3 p-0" *ngFor="let product of products">
+            <div class="product-box border-animation rounded p-2 m-2">
+                <div class="d-flex justify-content-center">
+                    <img [routerLink]="[ '/product/'+product.category.path, product.id ]" 
+                         [src] = "product.imagePath" alt="product.name" height="154px">
+                </div>
+                <h5 [routerLink]="[ '/product/'+product.category.path, product.id ]"
+                    class="boldR text-center hover-blue product-name mt-2">{{ product.name }} </h5>
+                <div class="d-flex justify-content-between align-items-center mb-3 color-grey" style="height: 72px;">
+                    <div>{{ product.ingridients }}</div>
+                    <div class="boldR" style="width: 50px;">{{ product. weight}} г</div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="fs-18">
+                        <span class="boldR">{{ product.price }} </span>
+                        грн
+                    </div>
+                    <div class="btn-group border btn-qty" role="group">
+                        <button (click)="productCount(product, false)" type="button" class="btn p-2">-</button>
+                        <input class="form-control border-0 boldR text-center p-2" type="text" [value]="product.count"
+                            style="width: 40px;">
+                        <button (click)="productCount(product, true)" type="button" class="btn p-2">+</button>
+                    </div>
+                    <button (click)="addToBasket(product)" class="bg-blue border-blue btn-order rounded boldR fs-12 p-2">
+                        ЗАМОВИТИ
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -8,6 +8,7 @@ export interface IProductRequest {
     weight: number;
     price: number;
     imagePath: string;
+    count: number;
 }
 
 export interface IProductResponse extends IProductRequest {

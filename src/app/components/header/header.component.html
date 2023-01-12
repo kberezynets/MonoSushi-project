@@ -129,14 +129,61 @@
                 </ul>
             </div>
             <!-- Basket -->
-            <div class="bg-blue h-100 px-3 py-4">
-                <a class="mx-1 my-3">
-                    <img src="../../../assets/images/basket.svg" alt="basket" class="mx-2 mt-1 mb-2">
-                    <span class="basket-number fs-12">0</span>  
+            <div class="d-flex justify-content-between align-items-center bg-blue h-100 px-3 py-4" 
+                 style="width: 140px;"
+                 data-bs-toggle="modal" data-bs-target="#addModal">
+                <a>
+                    <img src="../../../assets/images/basket.svg" alt="basket" class="mt-1 mb-2">
+                    <span class="basket-number fs-12"> {{ totalQty }}</span>  
                 </a>
-                <span><b>0</b> грн</span>
+                <span><b>{{ totalPrice }}</b> грн</span>
             </div>
         </div>
     </nav>
     <div class="margin-header"></div>
 </header>
+
+<div class="modal right fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-basket" style= "width:100%; max-width:600px;">
+      <div class="modal-content rounded-0 rounded-bottom">
+        <div class="modal-header pb-2">
+           <div *ngIf="totalQty == 0">
+                <h2>Ваш кошик порожній</h2>
+           </div> 
+           <div *ngIf="totalQty != 0">
+                <table class="table">
+                    <tr *ngFor="let product of basket" class="border-bottom border-muted">
+                        <td>
+                            <img [src] = "product.imagePath" [alt]="product.name" height="70px">
+                        </td>
+                        <td class="boldR ps-2" width="230px">{{ product.name}}</td>
+                        <td>
+                            <div class="btn-group border btn-qty" role="group">
+                                <button (click)="productCount(product, false)" type="button" class="btn p-2">-</button>
+                                <input class="form-control border-0 boldR text-center p-2" type="text" [value]="product.count"
+                                    style="width: 40px;">
+                                <button (click)="productCount(product, true)" type="button" class="btn p-2">+</button>
+                            </div>
+                        </td>
+                        <td class=" text-end ps-3"> <span class="boldR">{{ product.price * product.count }}</span> грн</td>
+                        <td>
+                            <button class="border-0 m-1">
+                                <img src="../../../assets/images/trash.png" alt="trash-icon" width="16px">
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+        </div>
+        <div class="modal-footer d-flex justify-content-between bg-blue">
+            <div>Сума: <span class="boldR fs-24">{{ totalPrice }}</span> грн</div>
+            <button 
+                type="button" 
+                class="btn btn-white text-uppercase fs-12 boldR py-3" 
+                data-bs-dismiss="modal">
+                Оформити замовлення
+            </button>
+        </div>
+      </div>
+    </div>
+</div>

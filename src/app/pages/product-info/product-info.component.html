@@ -1,0 +1,63 @@
+<nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+    <ol class="breadcrumb ms-5 my-3">
+        <li class="breadcrumb-item fs-12">
+            <a [routerLink]="[ '/']">Головна</a>
+        </li>
+        <li class="breadcrumb-item fs-12">{{ bullet }}</li>
+        <li class="breadcrumb-item fs-12">
+            <a [routerLink]="[ '/currentProduct/'+currentProduct.category.path]" >{{ currentProduct.category.name }}</a>
+        </li>
+        <li class="breadcrumb-item fs-12">{{ bullet }}</li>
+        <li class="breadcrumb-item fs-12">
+            <a href="#">Філадельфія</a>
+        </li>
+        <li class="breadcrumb-item fs-12">{{ bullet }}</li>
+        <li class="breadcrumb-item active fs-12 capitalize" aria-current="page">{{ currentProduct.name }}</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 mt-3 m-auto">
+            <div class="card mb-3 border-0">
+                <div class="row m-auto">
+                    <div class="col-6">
+                        <img 
+                        [src]="currentProduct.imagePath" 
+                        class="img-fluid" 
+                        [alt]="currentProduct.name">
+                    </div>
+                    <div class="col-6 align-self-center">
+                        <div class="card-body">
+                            <h1 class="card-title boldR my-3">{{ currentProduct.name }}</h1>
+                            <div class="mb-1 color-grey">
+                                <span class="boldR color-blue">Склад: </span>
+                                <span>{{ currentProduct.ingridients }}</span>
+                            </div>
+                            <div class="mb-3 color-grey">
+                                <span class="boldR color-blue">Вага: </span>
+                                <span>{{ currentProduct.weight + ' г'}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="fs-18"> 
+                                    <span class="boldR">{{ currentProduct.price }} </span>
+                                     грн
+                                </div>
+                                <div class="btn-group border btn-qty" role="group">
+                                    <button (click)="productCount(currentProduct, false)" type="button" class="btn">-</button>
+                                    <input class="form-control border-0 boldR text-center pt-2" type="text" [value]="currentProduct.count" style="width: 40px;">
+                                    <button (click)="productCount(currentProduct, true)" type="button" class="btn">+</button>
+                                </div>
+                                <button (click)="addToBasket(currentProduct)" 
+                                    class="bg-blue border-blue btn-order rounded boldR fs-12 p-2">
+                                    ЗАМОВИТИ
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="spacer"></div>

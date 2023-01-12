@@ -3,12 +3,16 @@
 </div>
 <div class="container d-flex flex-wrap justify-content-center" *ngFor="let action of actions">
     <div class="action-box col-5 p-2 mb-5 mx-2">
-        <a class="nav-link">
+        <a class="nav-link" [routerLink]="[ '/action', action.id ]">
             <img [src] = "action.imagePath" alt="" width="100%" class="rounded">
             <h5 class="boldR hover-blue text-center text-uppercase my-3">{{ action.name }} </h5>
         </a>
         <div class="d-flex justify-content-center top-border pt-3">
-            <button class="bg-blue border-blue rounded boldR fs-14 p-2 w-50">ДІЗНАТИСЬ БІЛЬШЕ</button>
+            <button 
+                [routerLink]="[ '/action', action.id ]"
+                class="bg-blue border-blue rounded boldR fs-14 p-2 w-50">
+                ДІЗНАТИСЬ БІЛЬШЕ
+            </button>
         </div>
     </div>
 </div>

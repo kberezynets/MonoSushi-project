@@ -24,6 +24,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ActionInfoComponent } from './pages/action-info/action-info.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ToastrModule } from 'ngx-toastr';
     AdminComponent,
     AdminActionComponent,
     AdminCategoryComponent,
-    AdminProductComponent
+    AdminProductComponent,
+    ActionInfoComponent,
+    ProductInfoComponent,
   ],
   imports: [
     BrowserModule,

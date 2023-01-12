@@ -1,0 +1,29 @@
+<nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+    <ol class="breadcrumb ms-5 my-3">
+        <li class="breadcrumb-item fs-12">
+            <a [routerLink]="[ '/']">Головна</a>
+        </li>
+        <li class="breadcrumb-item fs-12">{{ bullet }}</li>
+        <li class="breadcrumb-item fs-12">
+            <a [routerLink]="[ '/actions']">Акції</a>
+        </li>
+        <li class="breadcrumb-item fs-12">{{ bullet }}</li>
+        <li class="breadcrumb-item active fs-12 capitalize" aria-current="page">{{ action?.name }}</li>
+    </ol>
+</nav>
+<div class="container d-flex flex-wrap justify-content-center">
+    <div class="col-7 mt-3">
+        <div class="w-100">
+            <div class="card-body d-flex justify-content-center bg-blue rounded py-5">
+                <div class="boldR text-center header-line">{{ action?.title }}</div>
+            </div>
+            <div class="markers-style mt-3">
+                <ul>
+                    <li *ngFor="let item of descriptionItems" class="py-1">{{ item + '.'}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="spacer"></div>

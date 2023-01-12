@@ -1,41 +1,38 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-product-info',
+  templateUrl: './product-info.component.html',
+  styleUrls: ['./product-info.component.scss']
 })
-export class ProductComponent implements OnInit, OnDestroy {
 
-  public products: Array<IProductResponse> = [];
-  private eventSubscription!: Subscription;
+export class ProductInfoComponent implements OnInit{
+
+  public bullet = '\u{2022}';
+  public currentProduct!: IProductResponse;
 
   constructor(
     private productService: ProductService,
-    private orderService: OrderService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {
-    this.eventSubscription = this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.loadProducts();
-      }
+    private orderService: OrderService
+  ) { }
+
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe(response => {
+      this.currentProduct = response['productInfo'];
     })
   }
 
-  ngOnInit(): void { }
-
-  loadProducts(): void {
-    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategory(categoryName).subscribe(data => {
-      this.products = data;
-    })
-  }
+  // loadProduct(): void {
+  //   const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  //   this.productService.getOne(id).subscribe(data => {
+  //     this.currentProduct = data;
+  //   })
+  // }
 
   productCount(product: IProductResponse, value: boolean): void {
     if(value){
@@ -63,7 +60,4 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.orderService.changeBasket.next(true);
   }
 
-  ngOnDestroy(): void {
-    this.eventSubscription.unsubscribe();
-  }
 }
