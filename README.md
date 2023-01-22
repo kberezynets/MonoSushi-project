@@ -1,6 +1,6 @@
-# HW11Angular
+# MonoSushi Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+This project was created as hometask No8, 9, 10, 11... (Module 5, JS Advanced, Front-End course, Logos IT school)
 
 ## Development server
 
