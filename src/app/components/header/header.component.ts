@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ROLE } from 'src/app/shared/constants/role.constant';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
@@ -15,13 +18,21 @@ export class HeaderComponent implements OnInit {
   public totalQty = 0;
   public basket: Array<IProductResponse> = [];
 
+  public isLogin = false;
+  public loginUrl = '';
+  public loginPage = '';
+
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private accountService: AccountService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    this.checkUserLogin();
+    this.checkUpdatesUserLogin();
   }
 
   showMenu(): void {
@@ -32,7 +43,6 @@ export class HeaderComponent implements OnInit {
     if(localStorage.length > 0 && localStorage.getItem('basket')){
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
     }
-    console.log(this.basket);
     this.getTotal();
   }
 
@@ -56,4 +66,34 @@ export class HeaderComponent implements OnInit {
       this.loadBasket();
     })
   }
+
+  checkUserLogin(): void {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if(currentUser && currentUser.role === ROLE.ADMIN){
+      this.isLogin = true;
+      this.loginUrl = 'admin';
+      this.loginPage = 'Вихід';
+    } else if(currentUser && currentUser.role === ROLE.USER) {
+      this.isLogin = true;
+      this.loginUrl = 'cabinet';
+      this.loginPage = 'Вихід';
+    } else {
+      this.isLogin = false;
+      this.loginUrl = '';
+      this.loginPage = '';
+    }
+  }
+
+  checkUpdatesUserLogin(): void {
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkUserLogin();
+    })
+  }
+
+  logout(): void {
+    this.router.navigate(['/']);
+    localStorage.removeItem('currentUser');
+    this.accountService.isUserLogin$.next(true);
+  }
+
 }

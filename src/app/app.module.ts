@@ -26,6 +26,9 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { ToastrModule } from 'ngx-toastr';
 import { ActionInfoComponent } from './pages/action-info/action-info.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
     AdminProductComponent,
     ActionInfoComponent,
     ProductInfoComponent,
+    AuthorizationComponent,
+    CabinetComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

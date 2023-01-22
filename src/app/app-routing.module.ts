@@ -15,6 +15,10 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
 import { ActionInfoResolver } from './shared/services/action/action-info.resolver';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -28,12 +32,15 @@ const routes: Routes = [
   } },
   { path: 'dostavka-ta-oplata', component: DostavkaTaOplataComponent},
   { path: 'about-us', component: AboutUsComponent},
-  { path: 'admin', component: AdminComponent, children: [
+  { path: 'auth', component: AuthorizationComponent },
+  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
     { path: 'action', component: AdminActionComponent},
     { path: 'category', component: AdminCategoryComponent},
     { path: 'product', component: AdminProductComponent},
     { path: '', pathMatch: 'full', redirectTo: 'action' }
   ] },
+  { path: 'checkout', component: CheckoutComponent},
 ];
 
 @NgModule({

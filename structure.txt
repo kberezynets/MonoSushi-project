@@ -1,4 +1,12 @@
-Task 09
+Task 11
+
+1. Розробити сторінку логінування для адміна та юзера.
+2. Також розробити базову сторінку User profile.
+2. Добавити Guard для перевірки чи залогінований юзрр чи адмін.
+3. Зберігання авторизаційних даних через localstorage.
+4. Добавити можливість вилогування.
+5. Також стилізуємо сторінку замолення.
+
 
 app/
     components/
@@ -7,9 +15,15 @@ app/
     pages/
         home.component
         actions.component
+        action-info.component
         product.component
         dostavka-ta-oplata.component
         about-us.component
+        product.component
+        product-info.component
+        authorization.component
+        cabinet.component
+        checkout.componenbt
     shared/
         styles/
             _variables.scss
@@ -19,7 +33,9 @@ app/
         pipes/
         guards/
         services/
+        constants/
     admin.component
         admin-action.component
         admin-category.component
+        admin-product.component
 

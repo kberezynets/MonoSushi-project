@@ -1,0 +1,45 @@
+<div class="title-box" *ngIf="totalQty == 0">
+    <h2 class="text-center header-line">Ваш кошик порожній</h2>
+</div> 
+<div class="title-box" *ngIf="totalQty != 0">
+    <h2 class="text-center header-line">Ваш кошик</h2>
+</div>  
+
+<div class="col-7 mx-auto mt-5">
+   <div *ngIf="totalQty != 0">
+        <table class="table">
+            <tr *ngFor="let product of basket" class="border-bottom border-muted">
+                <td class="ps-2">
+                    <img [src] = "product.imagePath" [alt]="product.name" height="70px">
+                </td>
+                <td class="boldR ps-2" width="230px">{{ product.name}}</td>
+                <td>
+                    <div class="btn-group border btn-qty" role="group">
+                        <button (click)="productCount(product, false)" type="button" class="btn p-2">-</button>
+                        <input class="form-control border-0 boldR text-center p-2" type="text" [value]="product.count"
+                            style="width: 40px;">
+                        <button (click)="productCount(product, true)" type="button" class="btn p-2">+</button>
+                    </div>
+                </td>
+                <td class="text-end ps-3"> <span class="boldR">{{ product.price * product.count }}</span> грн</td>
+                <td class="ps-3">
+                    <button class="border-0">
+                        <img src="../../../assets/images/trash.png" alt="trash-icon" width="16px">
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <div class="d-flex justify-content-between align-items-center rounded-bottom border-top bg-blue p-3">
+            <div>Сума: <span class="boldR fs-24">{{ totalPrice }}</span> грн</div>
+            <button 
+                [routerLink]="[ '/checkout' ]" routerLinkActive="route-active" 
+                type="button" 
+                class="btn btn-white text-uppercase fs-12 boldR py-3" 
+                data-bs-dismiss="modal">
+                Оформити замовлення
+            </button>
+        </div>
+    </div> 
+</div>
+
+<div class="spacer"></div>

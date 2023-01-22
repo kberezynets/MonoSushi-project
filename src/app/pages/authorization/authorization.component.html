@@ -1,0 +1,21 @@
+<div class="container" style="min-height: 500px;">
+  <div class="title-box">
+    <h2 class="text-center header-line">Вхід в кабінет</h2>
+  </div> 
+  <div class="row mt-5">
+      <div class="col-4 m-auto">
+          <form [formGroup]="authForm" (ngSubmit)="login()">
+              <div class="mb-4">
+                  <input formControlName="email" class="form-control" placeholder="*Ваш Email"
+                    name="email" type="text"  id="email">
+                </div>
+              <div class="mb-4">
+                  <input formControlName="password" class="form-control" placeholder="*Пароль"
+                    name="password" type="password" id="password">
+                </div>
+              <button [disabled]="authForm.invalid" type="submit" class="bg-blue border-blue rounded text-uppercase boldR w-100 py-3">Увійти</button>
+          </form>
+      </div>
+  </div>
+  <div class="spacer"></div>
+</div>

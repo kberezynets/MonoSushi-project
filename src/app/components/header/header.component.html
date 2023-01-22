@@ -118,12 +118,19 @@
                             <span class="boldR">22:30</span>
                         </p>
                     </li>
-                    <li class="nav-item d-flex align-items-center me-5">
-                        <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active" 
+                    <li class="nav-item d-flex align-items-center me-5" *ngIf="!isLogin">
+                        <a [routerLink]="[ '/auth' ]" routerLinkActive="route-active" 
                             class="nav-link border-animation px-2">
                             <div>
                                 <img src="../../../assets/images/user.svg" alt="">
                             </div>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center boldR text-uppercase me-5" *ngIf="isLogin">
+                        <a [routerLink]="[ '/'+loginUrl ]" routerLinkActive="route-active" 
+                           class="nav-link hover-blue" aria-current="page"
+                           (click)="logout()"> 
+                           {{ loginPage }}
                         </a>
                     </li>
                 </ul>
@@ -178,6 +185,7 @@
         <div class="modal-footer d-flex justify-content-between bg-blue">
             <div>Сума: <span class="boldR fs-24">{{ totalPrice }}</span> грн</div>
             <button 
+                [routerLink]="[ '/checkout' ]" routerLinkActive="route-active" 
                 type="button" 
                 class="btn btn-white text-uppercase fs-12 boldR py-3" 
                 data-bs-dismiss="modal">

@@ -27,13 +27,6 @@ export class ProductInfoComponent implements OnInit{
     })
   }
 
-  // loadProduct(): void {
-  //   const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-  //   this.productService.getOne(id).subscribe(data => {
-  //     this.currentProduct = data;
-  //   })
-  // }
-
   productCount(product: IProductResponse, value: boolean): void {
     if(value){
       ++product.count;

@@ -1,0 +1,45 @@
+<div class="container" style="min-height: 500px;">
+    
+    <div class="title-box" *ngIf="totalQty == 0">
+        <h2 class="text-center header-line">Ваш кошик порожній</h2>
+    </div> 
+    <div class="title-box" *ngIf="totalQty != 0">
+        <h2 class="text-center header-line">Оформити замовлення</h2>
+    </div>  
+    
+    <div class="col-7 mx-auto mt-3">
+       <div *ngIf="totalQty != 0" class="d-flex flex-column">
+            <table class="table">
+                <tr *ngFor="let product of basket" class="border-bottom border-top border-muted py-1">
+                    <td class="ps-2">
+                        <img [src] = "product.imagePath" [alt]="product.name" height="70px">
+                    </td>
+                    <td class="boldR ps-2" width="230px">{{ product.name}}</td>
+                    <td>
+                        <div class="btn-group border btn-qty" role="group">
+                            <button (click)="productCount(product, false)" type="button" class="btn p-2">-</button>
+                            <input class="form-control border-0 boldR text-center p-2" type="text" [value]="product.count"
+                                style="width: 40px;">
+                            <button (click)="productCount(product, true)" type="button" class="btn p-2">+</button>
+                        </div>
+                    </td>
+                    <td class="text-end ps-3"> <span class="boldR">{{ product.price * product.count }}</span> грн</td>
+                    <td class="ps-3">
+                        <button class="border-0">
+                            <img src="../../../assets/images/trash.png" alt="trash-icon" width="16px">
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <div class="d-flex flex-row-reverse">
+                <div>До оплати: <span class="boldR">{{ totalPrice }}</span> грн</div>
+            </div>
+            <button class="bg-blue border-blue rounded boldR text-uppercase px-5 py-3 my-5 mx-auto">
+                Оформити замовлення
+            </button>
+        </div> 
+    </div>
+    
+<div class="spacer"></div>    
+
+</div>

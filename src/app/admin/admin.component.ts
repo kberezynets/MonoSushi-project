@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from '../shared/services/account/account.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +11,10 @@ export class AdminComponent implements OnInit {
 
   navStyle = 'standard-nav';
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -17,14 +22,10 @@ export class AdminComponent implements OnInit {
   styleChange(): void {
     this.navStyle = 'active-nav';
   }
+
+  logout(): void {
+    this.router.navigate(['/']);
+    localStorage.removeItem('currentUser');
+    this.accountService.isUserLogin$.next(true);
+  }
 }
-
-// bntStyle: string;
-//   AppComponent() {
-
-//    this. bntStyle = 'btn-default';
-//   }
-//   submit() {
-//     this.bntStyle = 'btn-change';
-
-//   }
